@@ -1,0 +1,15 @@
+## Sevice Nodeport means a port will be opened in the Node using which the application can be accessed using node-ip:port
+# 
+apiVersion: v1
+kind: Service
+metadata:
+  name: sample-nodeport-service
+spec:
+  type: NodePort
+  ports:
+    - targetPort: 80
+      port: 80
+      nodePort: 30008  # If not specified it will attach from the range of 30000-32767 of available ports
+  selector: # selector should contain labels of pods for mapping to the specific pod.
+    app: myapp
+    type: front-end

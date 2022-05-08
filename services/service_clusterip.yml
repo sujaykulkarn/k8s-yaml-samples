@@ -1,0 +1,14 @@
+## ClusterIp service is mainly used for pod-to-pod communication
+#
+apiVersion: v1
+kind: Service
+metadata:
+  name: back-end
+spec:
+  type: ClusterIP
+  ports:
+    - targetPort: 80
+      port: 80
+  selector:
+    app: myapp
+    type: back-end
